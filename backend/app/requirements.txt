@@ -1,0 +1,7 @@
+ollama
+fastapi
+uvicorn
+requests
+httpx
+langchain
+langchain_ollama
