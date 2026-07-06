@@ -5,6 +5,7 @@ from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
 from langchain_ollama import OllamaLLM
 import asyncio
+import os
 
 app = FastAPI(title="Jarvis Chat Streaming Backend")
 
@@ -18,7 +19,13 @@ app.add_middleware(
 )
 
 # Core Local LLM configuration
-llm = OllamaLLM(model="qwen2.5-coder:7b", temperature=0.4)
+OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://localhost:11435")    
+
+llm = OllamaLLM(
+        base_url=OLLAMA_BASE_URL,
+        model="qwen2.5-coder:7b",
+        temperature=0.4
+)
 
 class ChatPayload(BaseModel):
     message: str

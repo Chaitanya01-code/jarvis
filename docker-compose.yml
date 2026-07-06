@@ -1,8 +1,7 @@
-version: "3.9"
 
 services:
   backend:
-    build: ./backend
+    build: ./backend/app
     container_name: jarvis-backend
     ports:
       - "8000:8000"
@@ -11,12 +10,21 @@ services:
     environment:
       - OLLAMA_BASE_URL=http://ollama:11434
     restart: always
+  
+  frontend:
+    build: ./frontend
+    container_name: jarvis-frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    restart: always
 
   ollama:
     image: ollama/ollama
     container_name: ollama
     ports:
-      - "11434:11434"
+      - "11435:11434"
     volumes:
       - ollama_data:/root/.ollama
     restart: always
