@@ -1,6 +1,7 @@
 
 services:
   backend:
+    image : schaitanya01/jarvis-backend:latest
     build: ./backend/app
     container_name: jarvis-backend
     ports:
@@ -12,6 +13,7 @@ services:
     restart: always
   
   frontend:
+    image: schaitanya01/jarvis-frontend:latest
     build: ./frontend
     container_name: jarvis-frontend
     ports:
