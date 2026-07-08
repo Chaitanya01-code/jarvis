@@ -45,8 +45,3 @@ jobs:
         run: |
           docker push ${{ secrets.DOCKER_USERNAME }}/jarvis-backend:latest
           docker push ${{ secrets.DOCKER_USERNAME }}/jarvis-frontend:latest   
-
-          script: |
-            cd jarvis
-            docker compose pull
-            docker compose up -d
