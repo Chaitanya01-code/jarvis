@@ -46,21 +46,13 @@ jobs:
           docker push ${{ secrets.DOCKER_USERNAME }}/jarvis-backend:latest
           docker push ${{ secrets.DOCKER_USERNAME }}/jarvis-frontend:latest   
           
-      - name: Check SSH Secret
-        run: |
-          if [ -z "${{ secrets.SSH_KEY }}" ]; then
-            echo "SSH_KEY is EMPTY"
-            exit 1
-          else
-            echo "SSH_KEY exists"
-          fi 
-                   
+
       - name: Deploy to Server
         uses: appleboy/ssh-action@v1
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
-          key: ${{ secrets.SSH_KEY }}
+          key: ${{ secrets.SSH_PASSWORD }}
 
           script: |
             cd jarvis
