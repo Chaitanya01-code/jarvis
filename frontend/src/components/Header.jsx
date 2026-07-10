@@ -4,7 +4,7 @@ export default function Header() {
   return (
     <div style={styles.header}>
       <div style={styles.titleSection}>
-        <h1 style={styles.title}>Jarvis AI</h1>
+        <h1 style={styles.title}>AJ AI ASSISTANT</h1>
         <p style={styles.subtitle}>Your intelligent assistant</p>
       </div>
       <div style={styles.actions}>
